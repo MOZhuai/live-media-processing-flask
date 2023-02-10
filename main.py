@@ -45,7 +45,6 @@ def receive_pic():
     # config_path = ""
     # model = torch.load(model_path, config_path)
     # result = model(result)
-
     # return the detected image
     base64_img = img_to_base64(result)
 

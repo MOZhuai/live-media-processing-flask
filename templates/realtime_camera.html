@@ -10,6 +10,9 @@
         body {
             overflow-y: scroll;
         }
+        .video {
+            {#width: 100%;#}
+        }
         .result-box {
             display: flex;
             flex-direction: column;
@@ -41,7 +44,7 @@
 </head>
 <body>
 <div>
-    <video id="video" style="display: none"></video>
+    <video id="video" class="video" style="display: none"></video>
     <canvas id="canvas" style="display: none"></canvas>
     <div class="result-box">
         <div class="title">
@@ -50,10 +53,12 @@
         <div id="result" class="result"></div>
     </div>
     <script>
-        // IP = "127.0.0.1"
-        IP =  "192.168.0.107"
-        const width = 480;
-        const height = 800;
+        {# The IP of server #}
+        {#IP = "127.0.0.1"#}
+        IP = "172.23.142.148"
+        {#IP =  "172.23.161.221"#}
+        const width = 360;
+        const height = 600;
         const video = document.getElementById('video');
 
         //访问摄像头
@@ -114,9 +119,16 @@
             const canvas = document.getElementById('canvas');
             canvas.width = width;
             canvas.height = height;
+            {#TODO: match the width and height of mobilepohone#}
+            {#cwidth = video.clientHeight;#}
+            {#cheight = video.clientWidth;#}
+            {#canvas.width = cwidth;#}
+            {#canvas.height = cheight;#}
+            {#console.log("video shape:", cwidth, cheight)#}
             const context = canvas.getContext('2d');
             // console.log(context);
             context.drawImage(video, 0, 0, width, height, 0, 0, width, height);
+            {#context.drawImage(video, 0, 0, cwidth, cheight, 0, 0, cwidth, cheight);#}
             // 获取图片，数据格式为base64
             const imageData = canvas.toDataURL('image/png');
             // console.log(imageData);
